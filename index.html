@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sitemaat.nl bouwt professionele websites gratis voor lokale ondernemers. Binnen 48 uur live, vanaf €39 per maand.">
+  <title>Sitemaat.nl | Professionele website, gratis gebouwd</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0D9488',
+              sky: '#0EA5E9',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    [x-cloak] { display: none !important; }
+    #rotating-niche {
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    #rotating-niche.is-changing {
+      opacity: 0;
+      transform: translateY(0.5rem);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/60">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Hoofdnavigatie">
+      <div class="flex items-center justify-between h-16 md:h-18">
+        <a href="#" class="text-xl font-bold tracking-tight text-slate-900">
+          Sitemaat<span class="text-teal-600">.nl</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#hoe-het-werkt" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Hoe het werkt</a>
+          <a href="#prijzen" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Prijzen</a>
+          <a href="#niches" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Niches</a>
+          <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 rounded-lg hover:bg-sky-500 transition-colors shadow-sm">
+            Gratis Demo Aanvragen
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="menu-toggle" type="button" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu openen">
+          <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-slate-100">
+        <div class="flex flex-col gap-1 pt-3">
+          <a href="#hoe-het-werkt" class="mobile-link px-3 py-2.5 text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-lg transition-colors">Hoe het werkt</a>
+          <a href="#prijzen" class="mobile-link px-3 py-2.5 text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-lg transition-colors">Prijzen</a>
+          <a href="#niches" class="mobile-link px-3 py-2.5 text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-lg transition-colors">Niches</a>
+          <a href="#contact" class="mobile-link mt-2 inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 rounded-lg hover:bg-sky-500 transition-colors">Gratis Demo Aanvragen</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-teal-100/40 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-sky-100/50 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-50 text-teal-700 text-sm font-medium mb-6 border border-teal-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+              Gratis gebouwd, binnen 48 uur live
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold leading-tight tracking-tight text-slate-900">
+              Een professionele website voor je bedrijf. <span class="text-teal-600">Helemaal gratis gebouwd.</span>
+            </h1>
+            <p class="mt-6 text-lg text-slate-600 leading-relaxed max-w-xl">
+              Geen opstartkosten. Geen gedoe. Wij bouwen jouw website binnen 48 uur op maat. Je betaalt daarna alleen een vast, laag bedrag per maand voor het beheer en de hosting.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="#contact" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-teal-600 rounded-xl hover:bg-sky-500 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                Vraag direct een gratis voorbeeld aan
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              <a href="#hoe-het-werkt" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl hover:border-teal-300 hover:text-teal-700 transition-all">
+                Bekijk hoe het werkt
+              </a>
+            </div>
+            <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-slate-500">
+              <span class="flex items-center gap-1.5">
+                <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                Geen opstartkosten
+              </span>
+              <span class="flex items-center gap-1.5">
+                <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                Supersnelle laadtijd
+              </span>
+              <span class="flex items-center gap-1.5">
+                <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                Volledig ontzorgd
+              </span>
+            </div>
+          </div>
+
+          <!-- Website mockup -->
+          <div class="relative lg:pl-4">
+            <div class="absolute -inset-4 bg-gradient-to-br from-teal-100/60 to-sky-100/60 rounded-3xl blur-2xl -z-10"></div>
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200/80 overflow-hidden">
+              <!-- Browser chrome -->
+              <div class="flex items-center gap-2 px-4 py-3 bg-slate-100 border-b border-slate-200">
+                <div class="flex gap-1.5">
+                  <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                  <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                  <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                </div>
+                <div class="flex-1 mx-4">
+                  <div class="bg-white rounded-md px-3 py-1 text-xs text-slate-400 text-center border border-slate-200">
+                    www.jouwbedrijf.nl
+                  </div>
+                </div>
+              </div>
+              <!-- Mockup content -->
+              <div class="p-0">
+                <div class="bg-gradient-to-br from-teal-600 to-teal-700 px-6 py-10 text-white relative">
+                  <span class="absolute top-4 right-4 px-2 py-0.5 bg-white/20 text-teal-100 text-[10px] font-medium uppercase tracking-wider rounded">Voorbeeld</span>
+                  <p class="text-teal-200 text-xs font-medium uppercase tracking-wider mb-2">Jouw Bedrijf · Jouw Regio</p>
+                  <h2 class="text-2xl font-bold mb-2">Welkom bij Jouw Bedrijf</h2>
+                  <p class="text-teal-100 text-sm mb-4 max-w-xs">Professioneel online, persoonlijk in de buurt. Zo ziet jouw website eruit.</p>
+                  <span class="inline-block px-4 py-2 bg-white text-teal-700 text-sm font-semibold rounded-lg">Neem contact op</span>
+                </div>
+                <div class="grid grid-cols-3 gap-px bg-slate-200">
+                  <div class="bg-white p-4 text-center">
+                    <div class="w-8 h-8 rounded-lg bg-teal-50 flex items-center justify-center mx-auto mb-2">
+                      <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <p class="text-xs font-semibold text-slate-800">Lokaal</p>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Vindbaar in jouw regio</p>
+                  </div>
+                  <div class="bg-white p-4 text-center">
+                    <div class="w-8 h-8 rounded-lg bg-teal-50 flex items-center justify-center mx-auto mb-2">
+                      <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                    </div>
+                    <p class="text-xs font-semibold text-slate-800">Betrouwbaar</p>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Professionele uitstraling</p>
+                  </div>
+                  <div class="bg-white p-4 text-center">
+                    <div class="w-8 h-8 rounded-lg bg-teal-50 flex items-center justify-center mx-auto mb-2">
+                      <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <p class="text-xs font-semibold text-slate-800">Bereikbaar</p>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Direct contact mogelijk</p>
+                  </div>
+                </div>
+                <div class="px-6 py-5 flex items-center justify-between border-t border-slate-100">
+                  <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center">
+                      <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div>
+                      <p class="text-xs font-semibold text-slate-800">Bel direct</p>
+                      <p class="text-xs text-slate-500">Jouw telefoonnummer</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-1 text-amber-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Speed badge -->
+            <div class="absolute -bottom-4 -left-4 md:-left-6 bg-white rounded-xl shadow-lg border border-slate-100 px-4 py-3 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                <svg class="text-green-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500">Laadtijd</p>
+                <p class="text-sm font-bold text-slate-900">&lt; 1 seconde</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us / Problem-Solution -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            Je hebt het al druk genoeg met je eigen zaak.
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">
+            Waarom uren zwoegen op een website? Wix en WordPress kosten je tijd, geld en frustratie. Wij doen het anders.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <article class="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-teal-200 hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center mb-5 group-hover:bg-teal-600 transition-colors">
+              <svg class="text-teal-600 group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Gratis Gebouwd</h3>
+            <p class="text-slate-600 leading-relaxed">
+              Geen grote eenmalige investering van duizenden euro's. Wij bouwen jouw professionele website zonder opstartkosten.
+            </p>
+          </article>
+
+          <article class="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-teal-200 hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center mb-5 group-hover:bg-teal-600 transition-colors">
+              <svg class="text-teal-600 group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Binnen 48 uur live</h3>
+            <p class="text-slate-600 leading-relaxed">
+              Wij leveren supersnel een startklaar ontwerp. Geen weken wachten. Jouw bedrijf is snel online vindbaar.
+            </p>
+          </article>
+
+          <article class="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-teal-200 hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center mb-5 group-hover:bg-teal-600 transition-colors">
+              <svg class="text-teal-600 group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Volledig Ontzorgd</h3>
+            <p class="text-slate-600 leading-relaxed">
+              Wij regelen de hosting, beveiliging en updates. Jij focust op je klanten, wij zorgen dat alles blijft draaien.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="hoe-het-werkt" class="py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <p class="text-teal-600 font-semibold text-sm uppercase tracking-wider mb-3">Simpel en transparant</p>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Hoe het werkt</h2>
+          <p class="mt-4 text-lg text-slate-600">In drie stappen van idee naar een professionele, vindbare website.</p>
+        </div>
+
+        <div class="relative">
+          <!-- Timeline line (desktop) -->
+          <div class="hidden md:block absolute top-16 left-[16.67%] right-[16.67%] h-0.5 bg-gradient-to-r from-teal-200 via-teal-400 to-sky-400"></div>
+
+          <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <div class="relative text-center">
+              <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-teal-600 text-white text-xl font-bold shadow-lg shadow-teal-600/30 mb-6 relative z-10">
+                1
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">De Input</h3>
+              <p class="text-slate-600 leading-relaxed">
+                Jij deelt je bedrijfsnaam, contactgegevens en tarieven met ons. Dat is alles wat we nodig hebben om te starten.
+              </p>
+            </div>
+
+            <div class="relative text-center">
+              <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-teal-600 text-white text-xl font-bold shadow-lg shadow-teal-600/30 mb-6 relative z-10">
+                2
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">Wij bouwen</h3>
+              <p class="text-slate-600 leading-relaxed">
+                Wij bouwen binnen 48 uur jouw website. Professioneel, overzichtelijk en helemaal klaar om live te gaan. Jij levert de info, wij doen de rest.
+              </p>
+            </div>
+
+            <div class="relative text-center">
+              <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-sky-500 text-white text-xl font-bold shadow-lg shadow-sky-500/30 mb-6 relative z-10">
+                3
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">Live &amp; Groeien</h3>
+              <p class="text-slate-600 leading-relaxed">
+                Tevreden? We koppelen je eigen domeinnaam en je bent direct vindbaar in jouw regio. Klaar om klanten te trekken.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="prijzen" class="py-16 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Eerlijk en transparant</h2>
+          <p class="mt-4 text-lg text-slate-600">Geen verborgen kosten. Eén duidelijk abonnement met alles erin.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start max-w-5xl mx-auto">
+          <article class="relative bg-white rounded-2xl border-2 border-teal-600 shadow-xl overflow-hidden">
+            <div class="absolute top-0 right-0">
+              <span class="inline-block bg-teal-600 text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-bl-xl">
+                Alles-in-één
+              </span>
+            </div>
+
+            <div class="p-8 pt-10">
+              <h3 class="text-xl font-bold text-slate-900">Het Sitemaat Abonnement</h3>
+              <div class="mt-4 flex items-baseline gap-1">
+                <span class="text-5xl font-extrabold text-slate-900">€39</span>
+                <span class="text-slate-500 font-medium">/ maand</span>
+              </div>
+              <p class="mt-2 text-sm text-slate-500">excl. btw · 1 jaar contract</p>
+
+              <ul class="mt-8 space-y-4">
+                <li class="flex items-start gap-3">
+                  <svg class="text-teal-600 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-slate-700">Gratis websiteontwerp</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="text-teal-600 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-slate-700">Inclusief domeinnaam &amp; hosting</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="text-teal-600 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-slate-700">Supersnelle laadtijd</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="text-teal-600 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-slate-700">Technische updates &amp; beveiliging</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="text-teal-600 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span class="text-slate-700">Maandelijks opzegbaar na het eerste jaar</span>
+                </li>
+              </ul>
+
+              <a href="#contact" class="mt-8 w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-teal-600 rounded-xl hover:bg-sky-500 transition-all shadow-md">
+                Start met een gratis demo
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <div class="lg:pt-4">
+            <h3 class="text-2xl font-bold text-slate-900">Zo werkt je abonnement</h3>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Je website staat live en wij blijven er voor je zijn. Geen technische kennis nodig: je geeft wijzigingen door en wij zorgen dat alles klopt.
+            </p>
+
+            <ul class="mt-8 space-y-6">
+              <li class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center shrink-0">
+                  <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Wijzigingen doorgeven via een formulier</p>
+                  <p class="mt-1 text-slate-600 leading-relaxed">Nieuwe tarieven, andere openingstijden of een tekst aanpassen? Vul het formulier in en wij pakken het voor je op. Klein en simpel.</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center shrink-0">
+                  <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Binnen 2 werkdagen online, vaak sneller</p>
+                  <p class="mt-1 text-slate-600 leading-relaxed">Je aanpassing staat uiterlijk binnen twee werkdagen live op je website. In de praktijk regelen we het meestal nog diezelfde week, en vaak nog sneller.</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center shrink-0">
+                  <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Wij beheren de techniek</p>
+                  <p class="mt-1 text-slate-600 leading-relaxed">Hosting, beveiliging en updates liggen bij ons. Jij hoeft niets te installeren, bij te werken of zorgen te maken over hacks of trage laadtijden.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 max-w-5xl mx-auto">
+          <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 rounded-xl bg-teal-50 border border-teal-100 px-6 py-5 text-center sm:text-left">
+            <div class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center shrink-0">
+              <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756l-1.55.325a1 1 0 0 0-.894 1.212l.976 5.681a2 2 0 0 1-.502 1.21l-1.293 1.293"/></svg>
+            </div>
+            <p class="text-slate-700 leading-relaxed">
+              <span class="font-semibold text-slate-900">Meer nodig dan een kleine aanpassing?</span> Maatwerk is altijd mogelijk. We bespreken wat je wilt en sturen een offerte die past bij de omvang van het werk.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Niches -->
+    <section id="niches" class="py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+            Perfect voor:
+            <span class="block mt-2 md:mt-3 h-[1.2em] text-teal-600">
+              <span id="rotating-niche" class="inline-block" aria-live="polite">rijscholen</span>
+            </span>
+          </h2>
+          <p class="mt-6 text-lg text-slate-600">Lokale ondernemers die online gevonden willen worden, zonder gedoe met techniek.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 md:py-24 bg-white">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Veelgestelde vragen</h2>
+          <p class="mt-4 text-lg text-slate-600">Alles wat je wilt weten, helder uitgelegd.</p>
+        </div>
+
+        <div class="space-y-3" id="faq-list">
+          <details class="group bg-slate-50 rounded-xl border border-slate-100 overflow-hidden" open>
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none">
+              Is de website echt gratis?
+              <svg class="shrink-0 ml-4 text-slate-400 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-600 leading-relaxed">
+              Ja, de bouw is volledig gratis. Je betaalt alleen het maandelijkse service-abonnement voor hosting, onderhoud en kleine wijzigingen. Geen opstartkosten en geen verrassingen achteraf.
+            </div>
+          </details>
+
+          <details class="group bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none">
+              Hoe snel staat mijn website online?
+              <svg class="shrink-0 ml-4 text-slate-400 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-600 leading-relaxed">
+              Zodra wij je bedrijfsgegevens hebben, bouwen we binnen 48 uur een professionele website voor je. Tevreden? Dan koppelen we je domeinnaam en ben je direct vindbaar.
+            </div>
+          </details>
+
+          <details class="group bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none">
+              Wat heb ik nodig om te starten?
+              <svg class="shrink-0 ml-4 text-slate-400 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-600 leading-relaxed">
+              Niet veel. Je bedrijfsnaam, contactgegevens en eventueel je tarieven of diensten. Heb je al een logo of foto's? Mooi meegenomen, maar niet verplicht. Wij doen de rest.
+            </div>
+          </details>
+
+          <details class="group bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none">
+              Zit de domeinnaam bij de prijs in?
+              <svg class="shrink-0 ml-4 text-slate-400 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-600 leading-relaxed">
+              Ja. Een domeinnaam (bijvoorbeeld jouwbedrijf.nl) en hosting zitten inbegrepen in je abonnement. Heb je al een eigen domeinnaam? Dan koppelen we die aan je nieuwe website.
+            </div>
+          </details>
+
+          <details class="group bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none">
+              Kan ik zelf dingen aanpassen?
+              <svg class="shrink-0 ml-4 text-slate-400 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-600 leading-relaxed">
+              Omdat onze websites extreem snel en veilig zijn, beheren wij de code. Kleine tekst- of tariefwijzigingen geef je door via een formulier. Die zetten we gratis voor je door, uiterlijk binnen 2 werkdagen online.
+            </div>
+          </details>
+
+          <details class="group bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none">
+              Kan ik na het eerste jaar maandelijks opzeggen?
+              <svg class="shrink-0 ml-4 text-slate-400 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-600 leading-relaxed">
+              Ja. Je start met een abonnement van één jaar. Na dat eerste jaar kun je maandelijks opzeggen. Je zit dus niet voor altijd vast aan ons.
+            </div>
+          </details>
+
+          <details class="group bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none">
+              Zijn er verborgen kosten?
+              <svg class="shrink-0 ml-4 text-slate-400 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-600 leading-relaxed">
+              Nee. Je betaalt €39 per maand (excl. btw) en daar zit alles in: website, domeinnaam, hosting, beveiliging en kleine wijzigingen. Grotere aanpassingen of maatwerk bespreken we apart met een duidelijke offerte.
+            </div>
+          </details>
+
+          <details class="group bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none">
+              Moet ik iets technisch installeren of onderhouden?
+              <svg class="shrink-0 ml-4 text-slate-400 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-600 leading-relaxed">
+              Nee, helemaal niets. Wij regelen de hosting, updates en beveiliging. Jij hoeft geen plugins bij te werken, geen server te beheren en geen technische kennis te hebben.
+            </div>
+          </details>
+
+          <details class="group bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-5 font-semibold text-slate-900 hover:text-teal-700 transition-colors list-none">
+              Werkt mijn website ook goed op mobiel?
+              <svg class="shrink-0 ml-4 text-slate-400 group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 text-slate-600 leading-relaxed">
+              Ja. Elke website die wij bouwen werkt perfect op telefoon, tablet en computer. De meeste klanten zoeken lokaal via hun mobiel, dus dat is bij ons standaard goed geregeld.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact" class="py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative bg-slate-900 rounded-3xl overflow-hidden px-8 py-14 md:px-16 md:py-20 text-center">
+          <div class="absolute inset-0 bg-gradient-to-br from-teal-600/20 to-sky-500/10"></div>
+          <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl"></div>
+          <div class="relative">
+            <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+              Klaar voor een professionele website?
+            </h2>
+            <p class="mt-4 text-lg text-slate-300 max-w-xl mx-auto">
+              Vraag vandaag nog een gratis voorbeeld aan. Geen verplichtingen. Wij laten je zien wat mogelijk is.
+            </p>
+            <a href="mailto:info@sitemaat.nl" class="mt-8 inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-slate-900 bg-white rounded-xl hover:bg-teal-50 transition-all shadow-lg hover:-translate-y-0.5">
+              Gratis demo aanvragen
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <p class="text-xl font-bold text-white">
+            Sitemaat<span class="text-teal-400">.nl</span>
+          </p>
+          <p class="mt-2 text-sm">Professionele websites voor lokale ondernemers.</p>
+        </div>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="#" class="hover:text-white transition-colors">Algemene voorwaarden</a>
+          <a href="#" class="hover:text-white transition-colors">Privacybeleid</a>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-slate-800 text-center text-sm">
+        <p>&copy; 2026 Sitemaat.nl. Alle rechten voorbehouden.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconMenu = document.getElementById('icon-menu');
+    const iconClose = document.getElementById('icon-close');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      iconMenu.classList.toggle('hidden', !isOpen);
+      iconClose.classList.toggle('hidden', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        iconMenu.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Rotating niche headline
+    const niches = [
+      'rijscholen', 'schilders', 'stukadoors', 'timmermannen', 'kappers',
+      'schoonheidssalons', 'fysiotherapeuten', 'tandartsen', 'hoveniers', 'loodgieters',
+      'elektriciens', 'dakdekkers', 'autogarages', 'personal trainers', 'boekhouders',
+      'advocaten', 'cateraars', 'bloemisten', 'schoonmaakbedrijven', "nagelstudio's"
+    ];
+    const rotatingNiche = document.getElementById('rotating-niche');
+    let nicheIndex = 0;
+
+    if (rotatingNiche) {
+      setInterval(() => {
+        rotatingNiche.classList.add('is-changing');
+        setTimeout(() => {
+          nicheIndex = (nicheIndex + 1) % niches.length;
+          rotatingNiche.textContent = niches[nicheIndex];
+          rotatingNiche.classList.remove('is-changing');
+        }, 250);
+      }, 1000);
+    }
+
+    // Hide default details marker
+    document.querySelectorAll('summary').forEach(s => {
+      s.style.listStyle = 'none';
+      s.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return;
+      });
+    });
+  </script>
+
+</body>
+</html>
