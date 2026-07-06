@@ -42,39 +42,17 @@
 <body class="bg-slate-50 text-slate-900 font-sans antialiased">
 
   <!-- Navigation -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/60">
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/60 shadow-sm">
     <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Hoofdnavigatie">
-      <div class="flex items-center justify-between h-16 md:h-18">
-        <a href="#" class="flex items-center gap-2.5 text-xl font-bold tracking-tight text-slate-900">
-          <img src="logo.png" alt="Sitemaat.nl" width="32" height="32" class="w-8 h-8 rounded-lg">
-          Sitemaat<span class="text-teal-600">.nl</span>
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-2.5 text-lg sm:text-xl font-bold text-slate-900" aria-label="Sitemaat.nl">
+          <img src="logo.svg" alt="" width="36" height="36" class="w-9 h-9 shrink-0">
+          <span class="whitespace-nowrap">Sitemaat<span class="text-teal-600">.nl</span></span>
         </a>
 
-        <!-- Desktop nav -->
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#hoe-het-werkt" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Hoe het werkt</a>
-          <a href="#prijzen" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Prijzen</a>
-          <a href="#niches" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Niches</a>
-          <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 rounded-lg hover:bg-sky-500 transition-colors shadow-sm">
-            Gratis Demo Aanvragen
-          </a>
-        </div>
-
-        <!-- Mobile menu button -->
-        <button id="menu-toggle" type="button" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu openen">
-          <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-          <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-        </button>
-      </div>
-
-      <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-slate-100">
-        <div class="flex flex-col gap-1 pt-3">
-          <a href="#hoe-het-werkt" class="mobile-link px-3 py-2.5 text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-lg transition-colors">Hoe het werkt</a>
-          <a href="#prijzen" class="mobile-link px-3 py-2.5 text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-lg transition-colors">Prijzen</a>
-          <a href="#niches" class="mobile-link px-3 py-2.5 text-sm font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-50 rounded-lg transition-colors">Niches</a>
-          <a href="#contact" class="mobile-link mt-2 inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 rounded-lg hover:bg-sky-500 transition-colors">Gratis Demo Aanvragen</a>
-        </div>
+        <a href="#contact" class="inline-flex items-center justify-center px-4 sm:px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 rounded-lg hover:bg-sky-500 transition-colors shadow-sm">
+          Gratis demo aanvragen
+        </a>
       </div>
     </nav>
   </header>
@@ -526,24 +504,65 @@
       </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section id="contact" class="py-16 md:py-24">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="relative bg-slate-900 rounded-3xl overflow-hidden px-8 py-14 md:px-16 md:py-20 text-center">
-          <div class="absolute inset-0 bg-gradient-to-br from-teal-600/20 to-sky-500/10"></div>
-          <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl"></div>
-          <div class="relative">
-            <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
-              Klaar voor een professionele website?
-            </h2>
-            <p class="mt-4 text-lg text-slate-300 max-w-xl mx-auto">
-              Vraag vandaag nog een gratis voorbeeld aan. Geen verplichtingen. Wij laten je zien wat mogelijk is.
-            </p>
-            <a href="mailto:info@sitemaat.nl" class="mt-8 inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-slate-900 bg-white rounded-xl hover:bg-teal-50 transition-all shadow-lg hover:-translate-y-0.5">
-              Gratis demo aanvragen
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-          </div>
+    <!-- Contact form -->
+    <section id="contact" class="py-16 md:py-24 bg-slate-50">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+            Vraag je gratis voorbeeld aan
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">
+            Vul het formulier in en wij bouwen binnen 48 uur een voorbeeldwebsite op maat. Geen verplichtingen.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-100 p-6 md:p-10">
+          <form name="contact" method="POST" data-netlify="true" class="space-y-6">
+            <input type="hidden" name="form-name" value="contact">
+
+            <div>
+              <label for="bedrijfsnaam" class="block text-sm font-semibold text-slate-900 mb-2">Bedrijfsnaam <span class="text-teal-600" aria-hidden="true">*</span></label>
+              <input type="text" id="bedrijfsnaam" name="bedrijfsnaam" required placeholder="Bijv. Rijschool Jansen" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-all focus:border-teal-600 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-600/15">
+            </div>
+
+            <div>
+              <label for="branche" class="block text-sm font-semibold text-slate-900 mb-2">In welke branche ben je actief? <span class="text-teal-600" aria-hidden="true">*</span></label>
+              <input type="text" id="branche" name="branche" required placeholder="Bijv. rijschool, schilder, kapper of hovenier" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-all focus:border-teal-600 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-600/15">
+            </div>
+
+            <div>
+              <label for="regio" class="block text-sm font-semibold text-slate-900 mb-2">In welke stad of regio werk je voornamelijk? <span class="text-teal-600" aria-hidden="true">*</span></label>
+              <input type="text" id="regio" name="regio" required placeholder="Bijv. Amsterdam, Gelderland of heel Nederland" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-all focus:border-teal-600 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-600/15">
+            </div>
+
+            <div>
+              <label for="huidige-website" class="block text-sm font-semibold text-slate-900 mb-2">Heb je al een huidige website?</label>
+              <input type="text" id="huidige-website" name="huidige-website" placeholder="www.jouw-huidige-site.nl (indien van toepassing)" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-all focus:border-teal-600 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-600/15">
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="naam" class="block text-sm font-semibold text-slate-900 mb-2">Je Naam <span class="text-teal-600" aria-hidden="true">*</span></label>
+                <input type="text" id="naam" name="naam" required placeholder="Bijv. Mark Jansen" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-all focus:border-teal-600 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-600/15">
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-semibold text-slate-900 mb-2">E-mailadres <span class="text-teal-600" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="mark@voorbeeld.nl" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-all focus:border-teal-600 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-600/15">
+              </div>
+            </div>
+
+            <div>
+              <label for="telefoon" class="block text-sm font-semibold text-slate-900 mb-2">Telefoonnummer <span class="text-teal-600" aria-hidden="true">*</span></label>
+              <input type="tel" id="telefoon" name="telefoon" required placeholder="Bijv. 06 12345678" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-all focus:border-teal-600 focus:bg-white focus:outline-none focus:ring-4 focus:ring-teal-600/15">
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="w-full rounded-xl bg-teal-600 px-6 py-4 text-lg font-bold text-white shadow-md transition-all hover:bg-teal-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-teal-600/25">
+                Ja, bouw mijn gratis voorbeeld website 🚀
+              </button>
+              <p class="mt-3 text-center text-sm text-slate-500">🔒 Geen betaling nodig. Je zit nergens aan vast.</p>
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -575,29 +594,6 @@
   </footer>
 
   <script>
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const iconMenu = document.getElementById('icon-menu');
-    const iconClose = document.getElementById('icon-close');
-
-    menuToggle.addEventListener('click', () => {
-      const isOpen = !mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden');
-      iconMenu.classList.toggle('hidden', !isOpen);
-      iconClose.classList.toggle('hidden', isOpen);
-      menuToggle.setAttribute('aria-expanded', String(!isOpen));
-    });
-
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        iconMenu.classList.remove('hidden');
-        iconClose.classList.add('hidden');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
     // Rotating niche headline
     const niches = [
       'rijscholen', 'schilders', 'stukadoors', 'timmermannen', 'kappers',
