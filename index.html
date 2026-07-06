@@ -37,6 +37,9 @@
       opacity: 0;
       transform: translateY(0.5rem);
     }
+    #success-modal.is-open {
+      display: flex;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased">
@@ -517,7 +520,7 @@
         </div>
 
         <div class="bg-white rounded-2xl shadow-lg border border-slate-100 p-6 md:p-10">
-          <form name="contact" method="POST" data-netlify="true" class="space-y-6">
+          <form id="contact-form" name="contact" method="POST" data-netlify="true" class="space-y-6">
             <input type="hidden" name="form-name" value="contact">
 
             <div>
@@ -557,7 +560,7 @@
             </div>
 
             <div class="pt-2">
-              <button type="submit" class="w-full rounded-xl bg-teal-600 px-6 py-4 text-lg font-bold text-white shadow-md transition-all hover:bg-teal-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-teal-600/25">
+              <button type="submit" id="submit-btn" class="w-full rounded-xl bg-teal-600 px-6 py-4 text-lg font-bold text-white shadow-md transition-all hover:bg-teal-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-teal-600/25 disabled:opacity-60 disabled:cursor-not-allowed">
                 Ja, bouw mijn gratis voorbeeld website 🚀
               </button>
               <p class="mt-3 text-center text-sm text-slate-500">🔒 Geen betaling nodig. Je zit nergens aan vast.</p>
@@ -593,7 +596,117 @@
     </div>
   </footer>
 
+  <!-- Success modal -->
+  <div id="success-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div id="modal-backdrop" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+    <div class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-100 p-8 text-center">
+      <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-teal-100">
+        <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h3 id="modal-title" class="text-2xl font-bold text-slate-900">Bedankt voor je aanvraag!</h3>
+      <p class="mt-3 text-slate-600 leading-relaxed">
+        We gaan aan de slag met je gratis voorbeeldwebsite. Je hoort binnen 48 uur van ons.
+      </p>
+
+      <div class="mt-8 pt-6 border-t border-slate-100">
+        <p class="text-sm font-semibold text-slate-900">Ken je iemand die ook een professionele website kan gebruiken?</p>
+        <p class="mt-1 text-sm text-slate-500">Beveel Sitemaat.nl aan bij vrienden of collega-ondernemers.</p>
+        <button type="button" id="share-btn" class="mt-4 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3.5 text-base font-semibold text-white shadow-md transition-all hover:bg-teal-700 hover:shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
+          <span id="share-btn-text">Deel Sitemaat.nl</span>
+        </button>
+      </div>
+
+      <button type="button" id="modal-close" class="mt-4 w-full rounded-xl px-5 py-3 text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">
+        Sluiten
+      </button>
+    </div>
+  </div>
+
   <script>
+    // Contact form (Netlify AJAX + success modal)
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successModal = document.getElementById('success-modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalClose = document.getElementById('modal-close');
+    const shareBtn = document.getElementById('share-btn');
+    const shareBtnText = document.getElementById('share-btn-text');
+    const submitBtnDefaultText = submitBtn ? submitBtn.textContent : '';
+
+    const shareData = {
+      title: 'Sitemaat.nl',
+      text: 'Ken je een ondernemer zonder goede website? Sitemaat.nl bouwt professionele websites gratis. Je betaalt alleen een laag maandbedrag voor hosting en beheer.',
+      url: window.location.origin === 'file://' || window.location.hostname === 'localhost'
+        ? 'https://sitemaat.nl'
+        : window.location.origin
+    };
+
+    function openModal() {
+      successModal.classList.add('is-open');
+      successModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      successModal.classList.remove('is-open');
+      successModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    async function shareSite() {
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          return;
+        } catch (err) {
+          if (err.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(shareData.url + '\n\n' + shareData.text);
+        shareBtnText.textContent = 'Link gekopieerd!';
+        setTimeout(() => { shareBtnText.textContent = 'Deel Sitemaat.nl'; }, 2500);
+      } catch {
+        window.open('https://wa.me/?text=' + encodeURIComponent(shareData.text + ' ' + shareData.url), '_blank');
+      }
+    }
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Verzenden...';
+
+        try {
+          const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(contactForm)).toString()
+          });
+
+          if (response.ok) {
+            contactForm.reset();
+            openModal();
+          } else {
+            throw new Error('Verzenden mislukt');
+          }
+        } catch {
+          alert('Er ging iets mis bij het verzenden. Probeer het opnieuw of mail naar info@sitemaat.nl.');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitBtnDefaultText;
+        }
+      });
+    }
+
+    modalClose?.addEventListener('click', closeModal);
+    modalBackdrop?.addEventListener('click', closeModal);
+    shareBtn?.addEventListener('click', shareSite);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && successModal.classList.contains('is-open')) closeModal();
+    });
+
     // Rotating niche headline
     const niches = [
       'rijscholen', 'schilders', 'stukadoors', 'timmermannen', 'kappers',
