@@ -30,15 +30,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     [x-cloak] { display: none !important; }
-    #rotating-niche {
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-    #rotating-niche.is-changing {
-      opacity: 0;
-      transform: translateY(0.5rem);
-    }
     #success-modal.is-open {
       display: flex;
+    }
+    #niche-panel.is-fading {
+      opacity: 0;
     }
   </style>
 </head>
@@ -191,6 +187,64 @@
       </div>
     </section>
 
+    <!-- Niche showcase tabs -->
+    <section id="niches" class="bg-slate-50 border-y border-slate-100 py-12 md:py-16" aria-label="Branches">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8 md:mb-10">
+          <p class="text-teal-600 tracking-wider text-xs font-semibold uppercase mb-2">Flexibel en doelgericht</p>
+          <h2 class="text-slate-900 text-center text-2xl md:text-3xl font-bold">Op maat gemaakt voor jouw branche</h2>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-8" role="tablist" aria-label="Kies een branche">
+          <button type="button" role="tab" aria-selected="true" aria-controls="niche-panel" data-niche="rijscholen" class="niche-tab px-4 py-2.5 rounded-lg text-sm font-semibold border transition-all bg-teal-600 text-white border-teal-600 shadow-md shadow-teal-600/20">Rijscholen</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="niche-panel" data-niche="schilder" class="niche-tab px-4 py-2.5 rounded-lg text-sm font-semibold border transition-all bg-white text-slate-600 border-slate-200 hover:border-slate-300">Schilder &amp; Afwerking</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="niche-panel" data-niche="salon" class="niche-tab px-4 py-2.5 rounded-lg text-sm font-semibold border transition-all bg-white text-slate-600 border-slate-200 hover:border-slate-300">Salons &amp; Praktijken</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="niche-panel" data-niche="bouw" class="niche-tab px-4 py-2.5 rounded-lg text-sm font-semibold border transition-all bg-white text-slate-600 border-slate-200 hover:border-slate-300">Bouw &amp; Klusbedrijven</button>
+        </div>
+
+        <div id="niche-panel" role="tabpanel" class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center transition-opacity duration-300">
+          <div id="niche-content">
+            <h3 id="niche-title" class="text-xl md:text-2xl font-bold text-slate-900 leading-snug">Een website die zorgt voor een volle lesauto</h3>
+            <ul id="niche-bullets" class="mt-6 space-y-4">
+              <li class="flex items-start gap-3 text-slate-700">
+                <svg class="text-teal-600 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                Direct online proefles aanvragen
+              </li>
+              <li class="flex items-start gap-3 text-slate-700">
+                <svg class="text-teal-600 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                Overzichtelijke pakketten &amp; prijzen
+              </li>
+              <li class="flex items-start gap-3 text-slate-700">
+                <svg class="text-teal-600 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                Instructeur-wijzer &amp; slagingspercentages
+              </li>
+            </ul>
+            <a href="#contact" class="mt-8 inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-white bg-teal-600 rounded-xl hover:bg-teal-700 transition-colors shadow-sm">Vraag een gratis voorbeeld aan</a>
+          </div>
+
+          <div id="niche-mockup" class="relative">
+            <!-- Rijscholen mockup (default) -->
+            <div class="rounded-xl border border-slate-200 shadow-lg overflow-hidden bg-white">
+              <div class="flex items-center gap-2 px-3 py-2 bg-slate-100 border-b border-slate-200">
+                <div class="flex gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="w-2 h-2 rounded-full bg-green-400"></span></div>
+                <div class="flex-1 mx-2 bg-white rounded px-2 py-0.5 text-[10px] text-slate-400 text-center border border-slate-200">rijschooldewaal.nl</div>
+              </div>
+              <div class="bg-gradient-to-br from-teal-600 to-teal-700 px-5 py-6 text-white">
+                <p class="text-[10px] text-teal-200 uppercase tracking-wider mb-1">Rijschool De Waal</p>
+                <p class="text-lg font-bold">Snel je rijbewijs halen</p>
+                <span class="inline-block mt-3 px-3 py-1.5 bg-white text-teal-700 text-xs font-semibold rounded-md">Proefles aanvragen</span>
+              </div>
+              <div class="grid grid-cols-3 gap-px bg-slate-200 text-center text-xs">
+                <div class="bg-white py-3"><p class="font-bold text-teal-600">€1.450</p><p class="text-slate-500 mt-0.5">Hand</p></div>
+                <div class="bg-white py-3"><p class="font-bold text-teal-600">€1.650</p><p class="text-slate-500 mt-0.5">Auto</p></div>
+                <div class="bg-white py-3"><p class="font-bold text-teal-600">96%</p><p class="text-slate-500 mt-0.5">Geslaagd</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Why Us / Problem-Solution -->
     <section class="py-16 md:py-24 bg-white">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -206,7 +260,7 @@
         <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
           <article class="group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-teal-200 hover:shadow-md transition-all">
             <div class="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center mb-5 group-hover:bg-teal-600 transition-colors">
-              <svg class="text-teal-600 group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <svg class="text-teal-600 group-hover:text-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12"/><path d="M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></svg>
             </div>
             <h3 class="text-xl font-bold text-slate-900 mb-3">Gratis Gebouwd</h3>
             <p class="text-slate-600 leading-relaxed">
@@ -386,21 +440,6 @@
               <span class="font-semibold text-slate-900">Meer nodig dan een kleine aanpassing?</span> Maatwerk is altijd mogelijk. We bespreken wat je wilt en sturen een offerte die past bij de omvang van het werk.
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Niches -->
-    <section id="niches" class="py-16 md:py-24">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-14">
-          <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
-            Perfect voor:
-            <span class="block mt-2 md:mt-3 h-[1.2em] text-teal-600">
-              <span id="rotating-niche" class="inline-block" aria-live="polite">rijscholen</span>
-            </span>
-          </h2>
-          <p class="mt-6 text-lg text-slate-600">Lokale ondernemers die online gevonden willen worden, zonder gedoe met techniek.</p>
         </div>
       </div>
     </section>
@@ -707,26 +746,165 @@
       if (e.key === 'Escape' && successModal.classList.contains('is-open')) closeModal();
     });
 
-    // Rotating niche headline
-    const niches = [
-      'rijscholen', 'schilders', 'stukadoors', 'timmermannen', 'kappers',
-      'schoonheidssalons', 'fysiotherapeuten', 'tandartsen', 'hoveniers', 'loodgieters',
-      'elektriciens', 'dakdekkers', 'autogarages', 'personal trainers', 'boekhouders',
-      'advocaten', 'cateraars', 'bloemisten', 'schoonmaakbedrijven', "nagelstudio's"
-    ];
-    const rotatingNiche = document.getElementById('rotating-niche');
-    let nicheIndex = 0;
+    // Niche showcase tabs
+    const nicheData = {
+      rijscholen: {
+        title: 'Een website die zorgt voor een volle lesauto',
+        bullets: [
+          'Direct online proefles aanvragen',
+          'Overzichtelijke pakketten & prijzen',
+          'Instructeur-wijzer & slagingspercentages'
+        ],
+        mockup: `
+          <div class="rounded-xl border border-slate-200 shadow-lg overflow-hidden bg-white">
+            <div class="flex items-center gap-2 px-3 py-2 bg-slate-100 border-b border-slate-200">
+              <div class="flex gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="w-2 h-2 rounded-full bg-green-400"></span></div>
+              <div class="flex-1 mx-2 bg-white rounded px-2 py-0.5 text-[10px] text-slate-400 text-center border border-slate-200">rijschooldewaal.nl</div>
+            </div>
+            <div class="bg-gradient-to-br from-teal-600 to-teal-700 px-5 py-6 text-white">
+              <p class="text-[10px] text-teal-200 uppercase tracking-wider mb-1">Rijschool De Waal</p>
+              <p class="text-lg font-bold">Snel je rijbewijs halen</p>
+              <span class="inline-block mt-3 px-3 py-1.5 bg-white text-teal-700 text-xs font-semibold rounded-md">Proefles aanvragen</span>
+            </div>
+            <div class="grid grid-cols-3 gap-px bg-slate-200 text-center text-xs">
+              <div class="bg-white py-3"><p class="font-bold text-teal-600">€1.450</p><p class="text-slate-500 mt-0.5">Hand</p></div>
+              <div class="bg-white py-3"><p class="font-bold text-teal-600">€1.650</p><p class="text-slate-500 mt-0.5">Auto</p></div>
+              <div class="bg-white py-3"><p class="font-bold text-teal-600">96%</p><p class="text-slate-500 mt-0.5">Geslaagd</p></div>
+            </div>
+          </div>`
+      },
+      schilder: {
+        title: 'Laat je vakmanschap spreken en trek de beste klussen aan',
+        bullets: [
+          'Visuele projecten-galerij (Voor & Na)',
+          'Direct een offerte-aanvraag formulier',
+          'Lokale vindbaarheid in jouw regio'
+        ],
+        mockup: `
+          <div class="rounded-xl border border-slate-200 shadow-lg overflow-hidden bg-white">
+            <div class="flex items-center gap-2 px-3 py-2 bg-slate-100 border-b border-slate-200">
+              <div class="flex gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="w-2 h-2 rounded-full bg-green-400"></span></div>
+              <div class="flex-1 mx-2 bg-white rounded px-2 py-0.5 text-[10px] text-slate-400 text-center border border-slate-200">schilderbedrijfbetuwe.nl</div>
+            </div>
+            <div class="px-5 py-4 border-b border-slate-100">
+              <p class="text-sm font-bold text-slate-900">Schilderbedrijf Betuwe</p>
+              <p class="text-xs text-slate-500 mt-0.5">Vakwerk in de regio</p>
+            </div>
+            <div class="grid grid-cols-2 gap-2 p-4">
+              <div class="rounded-lg bg-slate-200 h-16 flex items-end p-2"><span class="text-[10px] font-medium text-slate-600 bg-white/80 px-1.5 py-0.5 rounded">Voor</span></div>
+              <div class="rounded-lg bg-teal-100 h-16 flex items-end p-2"><span class="text-[10px] font-medium text-teal-700 bg-white/80 px-1.5 py-0.5 rounded">Na</span></div>
+              <div class="rounded-lg bg-slate-200 h-16 flex items-end p-2"><span class="text-[10px] font-medium text-slate-600 bg-white/80 px-1.5 py-0.5 rounded">Voor</span></div>
+              <div class="rounded-lg bg-teal-100 h-16 flex items-end p-2"><span class="text-[10px] font-medium text-teal-700 bg-white/80 px-1.5 py-0.5 rounded">Na</span></div>
+            </div>
+            <div class="px-4 pb-4"><span class="block w-full text-center py-2 bg-teal-600 text-white text-xs font-semibold rounded-lg">Offerte aanvragen</span></div>
+          </div>`
+      },
+      salon: {
+        title: 'Meer trouwe klanten in je stoel zonder administratie',
+        bullets: [
+          'Online afspraken maken integratie',
+          'Behandelingen- & prijslijst menu',
+          'Prachtige sfeerimpressies & reviews'
+        ],
+        mockup: `
+          <div class="rounded-xl border border-slate-200 shadow-lg overflow-hidden bg-white">
+            <div class="flex items-center gap-2 px-3 py-2 bg-slate-100 border-b border-slate-200">
+              <div class="flex gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="w-2 h-2 rounded-full bg-green-400"></span></div>
+              <div class="flex-1 mx-2 bg-white rounded px-2 py-0.5 text-[10px] text-slate-400 text-center border border-slate-200">salonnova.nl</div>
+            </div>
+            <div class="bg-gradient-to-br from-rose-50 to-white px-5 py-5 border-b border-slate-100">
+              <p class="text-sm font-bold text-slate-900">Salon Nova</p>
+              <p class="text-xs text-slate-500 mt-1">Knippen · Kleuren · Styling</p>
+            </div>
+            <div class="divide-y divide-slate-100 text-sm">
+              <div class="flex justify-between px-5 py-2.5"><span class="text-slate-700">Knippen dames</span><span class="font-semibold text-slate-900">€35</span></div>
+              <div class="flex justify-between px-5 py-2.5"><span class="text-slate-700">Kleuren</span><span class="font-semibold text-slate-900">vanaf €65</span></div>
+              <div class="flex justify-between px-5 py-2.5"><span class="text-slate-700">Highlights</span><span class="font-semibold text-slate-900">vanaf €85</span></div>
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div class="flex text-amber-400 text-xs">★★★★★</div>
+              <span class="px-3 py-1.5 bg-teal-600 text-white text-xs font-semibold rounded-lg">Afspraak maken</span>
+            </div>
+          </div>`
+      },
+      bouw: {
+        title: 'Duidelijkheid voor je klanten, direct de juiste aanvragen',
+        bullets: [
+          'Overzicht van jouw expertises',
+          'WhatsApp-knop voor snel contact',
+          'Klantbeoordelingen prominent in beeld'
+        ],
+        mockup: `
+          <div class="rounded-xl border border-slate-200 shadow-lg overflow-hidden bg-white">
+            <div class="flex items-center gap-2 px-3 py-2 bg-slate-100 border-b border-slate-200">
+              <div class="flex gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="w-2 h-2 rounded-full bg-green-400"></span></div>
+              <div class="flex-1 mx-2 bg-white rounded px-2 py-0.5 text-[10px] text-slate-400 text-center border border-slate-200">klusbedrijfvandijk.nl</div>
+            </div>
+            <div class="px-5 py-4">
+              <p class="text-sm font-bold text-slate-900">Klusbedrijf Van Dijk</p>
+              <p class="text-xs text-slate-500 mt-1">Badkamer · Keuken · Timmerwerk</p>
+            </div>
+            <div class="grid grid-cols-3 gap-2 px-4 pb-3 text-center text-[10px]">
+              <div class="rounded-lg bg-slate-50 border border-slate-100 py-2 font-medium text-slate-700">Renovatie</div>
+              <div class="rounded-lg bg-slate-50 border border-slate-100 py-2 font-medium text-slate-700">Onderhoud</div>
+              <div class="rounded-lg bg-slate-50 border border-slate-100 py-2 font-medium text-slate-700">Montage</div>
+            </div>
+            <div class="mx-4 mb-3 flex items-center gap-2 rounded-lg bg-green-50 border border-green-100 px-3 py-2">
+              <span class="text-green-600 text-xs font-semibold">WhatsApp</span>
+              <span class="text-xs text-slate-600">Direct contact</span>
+            </div>
+            <div class="px-4 pb-4 border-t border-slate-100 pt-3">
+              <p class="text-[10px] text-amber-500 mb-1">★★★★★ 4.9 · 32 reviews</p>
+              <p class="text-xs text-slate-600 italic">"Snel, netjes en duidelijke afspraken."</p>
+            </div>
+          </div>`
+      }
+    };
 
-    if (rotatingNiche) {
-      setInterval(() => {
-        rotatingNiche.classList.add('is-changing');
-        setTimeout(() => {
-          nicheIndex = (nicheIndex + 1) % niches.length;
-          rotatingNiche.textContent = niches[nicheIndex];
-          rotatingNiche.classList.remove('is-changing');
-        }, 250);
-      }, 1000);
+    const nicheTabs = document.querySelectorAll('.niche-tab');
+    const nicheTitle = document.getElementById('niche-title');
+    const nicheBullets = document.getElementById('niche-bullets');
+    const nicheMockup = document.getElementById('niche-mockup');
+    const nichePanel = document.getElementById('niche-panel');
+    const checkIcon = '<svg class="text-teal-600 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+    function setActiveTab(tab) {
+      nicheTabs.forEach((btn) => {
+        const isActive = btn === tab;
+        btn.setAttribute('aria-selected', String(isActive));
+        btn.classList.toggle('bg-teal-600', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('border-teal-600', isActive);
+        btn.classList.toggle('shadow-md', isActive);
+        btn.classList.toggle('shadow-teal-600/20', isActive);
+        btn.classList.toggle('bg-white', !isActive);
+        btn.classList.toggle('text-slate-600', !isActive);
+        btn.classList.toggle('border-slate-200', !isActive);
+        btn.classList.toggle('hover:border-slate-300', !isActive);
+      });
     }
+
+    function switchNiche(key) {
+      const data = nicheData[key];
+      if (!data || !nichePanel) return;
+
+      nichePanel.classList.add('is-fading');
+      setTimeout(() => {
+        nicheTitle.textContent = data.title;
+        nicheBullets.innerHTML = data.bullets.map((item) =>
+          `<li class="flex items-start gap-3 text-slate-700">${checkIcon}${item}</li>`
+        ).join('');
+        nicheMockup.innerHTML = data.mockup;
+        nichePanel.classList.remove('is-fading');
+      }, 150);
+    }
+
+    nicheTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        setActiveTab(tab);
+        switchNiche(tab.dataset.niche);
+      });
+    });
 
     // Hide default details marker
     document.querySelectorAll('summary').forEach(s => {
