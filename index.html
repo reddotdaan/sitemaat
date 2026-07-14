@@ -5,8 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Sitemaat.nl bouwt professionele websites gratis voor lokale ondernemers. Binnen 48 uur live, vanaf €39 per maand.">
   <title>Sitemaat.nl | Professionele website, gratis gebouwd</title>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:site_name" content="Sitemaat.nl">
+  <meta property="og:title" content="Sitemaat.nl | Professionele website, gratis gebouwd">
+  <meta property="og:description" content="Gratis website voor je bedrijf. Binnen 48 uur live, vanaf €39 per maand voor hosting en beheer.">
+  <meta property="og:url" content="https://sitemaat.nl">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sitemaat.nl | Professionele website, gratis gebouwd">
+  <meta name="twitter:description" content="Gratis website voor je bedrijf. Binnen 48 uur live, vanaf €39 per maand.">
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Sitemaat.nl",
+    "legalName": "Sitemaat",
+    "url": "https://sitemaat.nl",
+    "description": "Professionele websites voor lokale ondernemers. Gratis gebouwd, vanaf €39 per maand.",
+    "areaServed": "NL",
+    "email": "info@sitemaat.nl",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Deellaan 50",
+      "addressLocality": "Bemmel",
+      "addressCountry": "NL"
+    },
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "KVK",
+      "value": "74655213"
+    },
+    "priceRange": "€€",
+    "offers": {
+      "@type": "Offer",
+      "price": "39",
+      "priceCurrency": "EUR",
+      "description": "Maandelijks abonnement incl. hosting, domein en onderhoud"
+    }
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -33,16 +72,17 @@
     #success-modal.is-open {
       display: flex;
     }
-    @keyframes carousel-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+    #rotating-niche {
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
-    .carousel-track {
-      animation: carousel-scroll 40s linear infinite;
-      width: max-content;
+    #rotating-niche.is-changing {
+      opacity: 0;
+      transform: translateY(0.5rem);
     }
-    #client-carousel:hover .carousel-track {
-      animation-play-state: paused;
+    @media (prefers-reduced-motion: reduce) {
+      #rotating-niche {
+        transition: none;
+      }
     }
     .device-macbook-bezel {
       background: #000;
@@ -70,6 +110,29 @@
       background: linear-gradient(145deg, #3a3a3c 0%, #1d1d1f 50%, #2c2c2e 100%);
       box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.45), inset 0 0 0 1px rgba(255,255,255,0.08);
     }
+    .portfolio-browser {
+      box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 10px 20px -4px rgba(15, 23, 42, 0.08);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .portfolio-card:hover .portfolio-browser {
+      box-shadow: 0 20px 40px -12px rgba(13, 148, 136, 0.2), 0 8px 16px -6px rgba(15, 23, 42, 0.1);
+      transform: translateY(-2px);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .portfolio-browser {
+        transition: none;
+      }
+      .portfolio-card:hover .portfolio-browser {
+        transform: none;
+      }
+    }
+    .portfolio-track {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .portfolio-track::-webkit-scrollbar {
+      display: none;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased">
@@ -77,14 +140,22 @@
   <!-- Navigation -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/60 shadow-sm">
     <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Hoofdnavigatie">
-      <div class="flex items-center justify-between h-16">
-        <a href="#" class="flex items-center gap-2.5 text-lg sm:text-xl font-bold text-slate-900" aria-label="Sitemaat.nl">
+      <div class="flex items-center justify-between h-16 gap-4">
+        <a href="#" class="flex items-center gap-2.5 text-lg sm:text-xl font-bold text-slate-900 shrink-0" aria-label="Sitemaat.nl">
           <img src="logo.svg" alt="" width="36" height="36" class="w-9 h-9 shrink-0">
           <span class="whitespace-nowrap">Sitemaat<span class="text-teal-600">.nl</span></span>
         </a>
 
-        <a href="#contact" class="inline-flex items-center justify-center px-4 sm:px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 rounded-lg hover:bg-sky-500 transition-colors shadow-sm">
-          Gratis demo aanvragen
+        <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+          <a href="#hoe-het-werkt" class="hover:text-teal-600 transition-colors">Hoe het werkt</a>
+          <a href="#werk" class="hover:text-teal-600 transition-colors">Voorbeelden</a>
+          <a href="#prijzen" class="hover:text-teal-600 transition-colors">Prijzen</a>
+          <a href="#over-ons" class="hover:text-teal-600 transition-colors">Over ons</a>
+          <a href="#faq" class="hover:text-teal-600 transition-colors">FAQ</a>
+        </div>
+
+        <a href="#contact" class="inline-flex items-center justify-center px-4 sm:px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 rounded-lg hover:bg-sky-500 transition-colors shadow-sm shrink-0">
+          Gratis voorbeeld aanvragen
         </a>
       </div>
     </nav>
@@ -173,7 +244,7 @@
                     <div class="flex-1 flex flex-col min-h-0">
                       <div class="shrink-0 mx-1.5 mt-1 px-2 py-1 rounded-md bg-slate-100 border-l-2 border-teal-500">
                         <p class="text-[4px] text-slate-600 italic leading-snug">"Professioneel geholpen, snel geregeld!"</p>
-                        <p class="text-[4px] text-slate-400 mt-0.5">— Tevreden klant</p>
+                        <p class="text-[4px] text-slate-400 mt-0.5">Tevreden klant</p>
                       </div>
                       <div class="mt-auto shrink-0 bg-slate-800 px-3 py-1.5 flex items-center justify-between">
                         <p class="text-[5px] text-slate-300">06 - 12 34 56 78</p>
@@ -271,84 +342,6 @@
       </div>
     </section>
 
-    <!-- Client carousel -->
-    <section id="niches" class="bg-slate-50 border-y border-slate-100 py-10 md:py-12" aria-label="Klanten">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <h2 class="text-slate-900 text-center text-xl md:text-2xl font-bold">Deze bedrijven gingen je voor</h2>
-      </div>
-
-      <div id="client-carousel" class="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        <div class="carousel-track flex items-center gap-4 md:gap-6 px-4">
-          <!-- Set 1 -->
-          <a href="https://www.rijschooldewaal.nl" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">RD</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Rijschool De Waal</span>
-          </a>
-          <a href="https://www.schilderbedrijfbetuwe.nl" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">SB</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Schilderbedrijf Betuwe</span>
-          </a>
-          <a href="https://www.salonnova.nl" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">SN</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Salon Nova</span>
-          </a>
-          <a href="https://www.klusbedrijfvandijk.nl" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">KV</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Klusbedrijf Van Dijk</span>
-          </a>
-          <a href="https://www.fysiotherapieprins.nl" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">FP</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Fysiotherapie Prins</span>
-          </a>
-          <a href="https://www.hoveniersbedrijfgroen.nl" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">HG</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Hoveniersbedrijf Groen</span>
-          </a>
-          <a href="https://www.autogaragemijer.nl" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">AM</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Autogarage Meijer</span>
-          </a>
-          <a href="https://www.kapsterijdelinde.nl" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">KL</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Kapsterij De Linde</span>
-          </a>
-          <!-- Set 2 (duplicate for seamless loop) -->
-          <a href="https://www.rijschooldewaal.nl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">RD</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Rijschool De Waal</span>
-          </a>
-          <a href="https://www.schilderbedrijfbetuwe.nl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">SB</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Schilderbedrijf Betuwe</span>
-          </a>
-          <a href="https://www.salonnova.nl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">SN</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Salon Nova</span>
-          </a>
-          <a href="https://www.klusbedrijfvandijk.nl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">KV</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Klusbedrijf Van Dijk</span>
-          </a>
-          <a href="https://www.fysiotherapieprins.nl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">FP</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Fysiotherapie Prins</span>
-          </a>
-          <a href="https://www.hoveniersbedrijfgroen.nl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">HG</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Hoveniersbedrijf Groen</span>
-          </a>
-          <a href="https://www.autogaragemijer.nl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">AM</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Autogarage Meijer</span>
-          </a>
-          <a href="https://www.kapsterijdelinde.nl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1" class="shrink-0 flex items-center gap-3 px-5 py-3.5 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-teal-200 hover:shadow-md transition-all group">
-            <span class="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-teal-50 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:text-teal-600 transition-colors">KL</span>
-            <span class="text-sm md:text-base font-semibold text-slate-700 group-hover:text-slate-900 whitespace-nowrap">Kapsterij De Linde</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
     <!-- Why Us / Problem-Solution -->
     <section class="py-16 md:py-24 bg-white">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -413,7 +406,7 @@
               <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-teal-600 text-white text-xl font-bold shadow-lg shadow-teal-600/30 mb-6 relative z-10">
                 1
               </div>
-              <h3 class="text-xl font-bold text-slate-900 mb-3">De Input</h3>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">Jouw gegevens</h3>
               <p class="text-slate-600 leading-relaxed">
                 Jij deelt je bedrijfsnaam, contactgegevens en tarieven met ons. Dat is alles wat we nodig hebben om te starten.
               </p>
@@ -433,10 +426,242 @@
               <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-teal-600 text-white text-xl font-bold shadow-lg shadow-teal-600/30 mb-6 relative z-10">
                 3
               </div>
-              <h3 class="text-xl font-bold text-slate-900 mb-3">Live &amp; Groeien</h3>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">Online &amp; groeien</h3>
               <p class="text-slate-600 leading-relaxed">
                 Tevreden? We koppelen je eigen domeinnaam en je bent direct vindbaar in jouw regio. Klaar om klanten te trekken.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Uit de werkplaats -->
+    <section id="werk" class="py-12 md:py-16 bg-white" aria-label="Websitevoorbeelden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div class="text-center sm:text-left max-w-xl mx-auto sm:mx-0">
+            <p class="text-teal-600 font-semibold text-sm uppercase tracking-wider mb-2">Uit de werkplaats</p>
+            <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">Zo ziet jouw website eruit</h2>
+            <p class="mt-2 text-slate-600">Vier voorbeelden. Swipe of gebruik de pijltjes om ze te bekijken.</p>
+          </div>
+          <div class="hidden sm:flex items-center gap-2 shrink-0">
+            <button type="button" id="portfolio-prev" class="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-600 hover:text-teal-600 hover:border-teal-200 transition-colors flex items-center justify-center" aria-label="Vorige voorbeeld">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" id="portfolio-next" class="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-600 hover:text-teal-600 hover:border-teal-200 transition-colors flex items-center justify-center" aria-label="Volgende voorbeeld">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="relative -mx-4 sm:mx-0">
+          <div id="portfolio-track" class="portfolio-track flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4 sm:px-0" tabindex="0">
+            <!-- Rijschool -->
+            <article class="portfolio-card snap-start shrink-0 w-[280px] sm:w-[300px] group">
+              <a href="https://rijschool-voorbeeld.nl" target="_blank" rel="noopener noreferrer" class="block rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2" aria-label="Bekijk rijschool voorbeeldwebsite">
+                <div class="portfolio-browser rounded-xl border border-slate-200 overflow-hidden bg-white">
+                  <div class="flex items-center gap-2 px-3 py-2 bg-slate-100 border-b border-slate-200">
+                    <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="w-2 h-2 rounded-full bg-green-400"></span></span>
+                    <span class="flex-1 text-center text-[10px] text-slate-400 truncate">rijschool-voorbeeld.nl</span>
+                  </div>
+                  <div class="aspect-[4/3] bg-slate-50 flex flex-col text-left">
+                    <div class="shrink-0 bg-gradient-to-br from-amber-500 to-orange-600 px-3 py-4">
+                      <p class="text-[9px] text-amber-100 uppercase tracking-wide">Rijbewijs halen in jouw regio</p>
+                      <p class="text-sm font-bold text-white mt-0.5">Snel en veilig je rijbewijs</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-1.5 p-2 bg-white flex-1">
+                      <div class="rounded bg-amber-50 p-1.5 text-center"><p class="text-[8px] font-bold text-amber-800">B-auto</p><p class="text-[7px] text-slate-500">€45/les</p></div>
+                      <div class="rounded bg-orange-50 p-1.5 text-center"><p class="text-[8px] font-bold text-orange-800">BE</p><p class="text-[7px] text-slate-500">Aanhangwagen</p></div>
+                      <div class="rounded bg-amber-50 p-1.5 text-center"><p class="text-[8px] font-bold text-amber-800">4.9 ★</p><p class="text-[7px] text-slate-500">Reviews</p></div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <div class="mt-3 flex items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Rijschool</h3>
+                  <p class="text-xs text-slate-500">Lestijden &amp; tarieven</p>
+                </div>
+                <a href="https://rijschool-voorbeeld.nl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 shrink-0 px-2.5 py-1.5 text-[11px] font-semibold text-teal-600 bg-teal-50 border border-teal-100 rounded-lg hover:bg-teal-600 hover:text-white hover:border-teal-600 transition-colors">
+                  Bekijk
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Kapper -->
+            <article class="portfolio-card snap-start shrink-0 w-[280px] sm:w-[300px] group">
+              <a href="https://kapper-voorbeeld.nl" target="_blank" rel="noopener noreferrer" class="block rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2" aria-label="Bekijk kapper voorbeeldwebsite">
+                <div class="portfolio-browser rounded-xl border border-slate-200 overflow-hidden bg-white">
+                  <div class="flex items-center gap-2 px-3 py-2 bg-slate-100 border-b border-slate-200">
+                    <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="w-2 h-2 rounded-full bg-green-400"></span></span>
+                    <span class="flex-1 text-center text-[10px] text-slate-400 truncate">kapper-voorbeeld.nl</span>
+                  </div>
+                  <div class="aspect-[4/3] bg-slate-50 flex flex-col text-left">
+                    <div class="shrink-0 bg-gradient-to-br from-rose-500 to-pink-600 px-3 py-4">
+                      <p class="text-[9px] text-rose-100 uppercase tracking-wide">Jouw kapper in de buurt</p>
+                      <p class="text-sm font-bold text-white mt-0.5">Knippen &amp; kleuren</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-1.5 p-2 bg-white flex-1">
+                      <div class="rounded bg-rose-50 p-2 text-center"><p class="text-[9px] font-bold text-rose-800">Heren</p><p class="text-[8px] text-slate-500">€22</p></div>
+                      <div class="rounded bg-pink-50 p-2 text-center"><p class="text-[9px] font-bold text-pink-800">Dames</p><p class="text-[8px] text-slate-500">€35</p></div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <div class="mt-3 flex items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Kapper</h3>
+                  <p class="text-xs text-slate-500">Prijzen &amp; afspraak</p>
+                </div>
+                <a href="https://kapper-voorbeeld.nl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 shrink-0 px-2.5 py-1.5 text-[11px] font-semibold text-teal-600 bg-teal-50 border border-teal-100 rounded-lg hover:bg-teal-600 hover:text-white hover:border-teal-600 transition-colors">
+                  Bekijk
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Schilder -->
+            <article class="portfolio-card snap-start shrink-0 w-[280px] sm:w-[300px] group">
+              <a href="https://schilder-voorbeeld.nl" target="_blank" rel="noopener noreferrer" class="block rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2" aria-label="Bekijk schilder voorbeeldwebsite">
+                <div class="portfolio-browser rounded-xl border border-slate-200 overflow-hidden bg-white">
+                  <div class="flex items-center gap-2 px-3 py-2 bg-slate-100 border-b border-slate-200">
+                    <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="w-2 h-2 rounded-full bg-green-400"></span></span>
+                    <span class="flex-1 text-center text-[10px] text-slate-400 truncate">schilder-voorbeeld.nl</span>
+                  </div>
+                  <div class="aspect-[4/3] bg-slate-50 flex flex-col text-left">
+                    <div class="shrink-0 bg-gradient-to-br from-sky-600 to-blue-700 px-3 py-4">
+                      <p class="text-[9px] text-sky-100 uppercase tracking-wide">Vakmanschap sinds 1998</p>
+                      <p class="text-sm font-bold text-white mt-0.5">Binnen &amp; buiten schilderwerk</p>
+                    </div>
+                    <div class="flex gap-1.5 p-2 bg-white flex-1">
+                      <div class="flex-1 rounded bg-sky-50 border border-sky-100 p-2"><p class="text-[9px] font-bold text-sky-800">Gratis offerte</p><p class="text-[8px] text-slate-500 mt-0.5">Binnen 24 uur</p></div>
+                      <div class="flex-1 rounded bg-blue-50 border border-blue-100 p-2"><p class="text-[9px] font-bold text-blue-800">5 jaar garantie</p></div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <div class="mt-3 flex items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Schilder</h3>
+                  <p class="text-xs text-slate-500">Offerte &amp; garantie</p>
+                </div>
+                <a href="https://schilder-voorbeeld.nl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 shrink-0 px-2.5 py-1.5 text-[11px] font-semibold text-teal-600 bg-teal-50 border border-teal-100 rounded-lg hover:bg-teal-600 hover:text-white hover:border-teal-600 transition-colors">
+                  Bekijk
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Fysiotherapeut -->
+            <article class="portfolio-card snap-start shrink-0 w-[280px] sm:w-[300px] group">
+              <a href="https://fysio-voorbeeld.nl" target="_blank" rel="noopener noreferrer" class="block rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2" aria-label="Bekijk fysiotherapeut voorbeeldwebsite">
+                <div class="portfolio-browser rounded-xl border border-slate-200 overflow-hidden bg-white">
+                  <div class="flex items-center gap-2 px-3 py-2 bg-slate-100 border-b border-slate-200">
+                    <span class="flex gap-1"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="w-2 h-2 rounded-full bg-green-400"></span></span>
+                    <span class="flex-1 text-center text-[10px] text-slate-400 truncate">fysio-voorbeeld.nl</span>
+                  </div>
+                  <div class="aspect-[4/3] bg-emerald-600 px-3 py-4 text-left flex flex-col justify-between">
+                    <div>
+                      <p class="text-[9px] text-emerald-100">Fysiotherapie</p>
+                      <p class="text-sm font-bold text-white mt-0.5">Pijnvrij bewegen</p>
+                      <p class="text-[8px] text-emerald-50 mt-1">Behandeling op maat, vergoed via zorgverzekering.</p>
+                    </div>
+                    <span class="inline-block w-fit px-2 py-1 bg-white text-emerald-700 text-[9px] font-semibold rounded">Afspraak maken</span>
+                  </div>
+                </div>
+              </a>
+              <div class="mt-3 flex items-center justify-between gap-2">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-sm">Fysiotherapeut</h3>
+                  <p class="text-xs text-slate-500">Afspraak &amp; behandeling</p>
+                </div>
+                <a href="https://fysio-voorbeeld.nl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 shrink-0 px-2.5 py-1.5 text-[11px] font-semibold text-teal-600 bg-teal-50 border border-teal-100 rounded-lg hover:bg-teal-600 hover:text-white hover:border-teal-600 transition-colors">
+                  Bekijk
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="flex sm:hidden justify-center gap-2 mt-4">
+          <button type="button" id="portfolio-prev-mobile" class="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-600 hover:text-teal-600 hover:border-teal-200 transition-colors flex items-center justify-center" aria-label="Vorige voorbeeld">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button type="button" id="portfolio-next-mobile" class="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-600 hover:text-teal-600 hover:border-teal-200 transition-colors flex items-center justify-center" aria-label="Volgende voorbeeld">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="mt-8 text-center">
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-teal-600 rounded-xl hover:bg-sky-500 transition-all shadow-md">
+            Vraag je gratis voorbeeld aan
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perfect voor: [branche] -->
+    <section id="niches" class="py-16 md:py-24 bg-slate-50 border-y border-slate-100" aria-label="Branches">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+            Perfect voor:
+            <span class="block mt-2 md:mt-3 h-[1.2em] text-teal-600">
+              <span id="rotating-niche" class="inline-block" aria-live="polite">rijscholen</span>
+            </span>
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- Over ons -->
+    <section id="over-ons" class="py-16 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div>
+            <p class="text-teal-600 font-semibold text-sm uppercase tracking-wider mb-3">Over Sitemaat</p>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Websites voor ondernemers die liever ondernemen</h2>
+            <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+              Achter Sitemaat.nl zitten Daan en Jelle. We zagen dat veel ondernemers wel een professionele website willen, maar vastlopen op WordPress, hosting of hoge eenmalige kosten bij een webbouwer.
+            </p>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Daarom doen wij het anders: wij bouwen je website gratis en je betaalt alleen een laag, vast maandbedrag voor beheer. Geen technische kennis nodig, geen gedoe met plugins of updates. Wij gunnen iedereen een goede website, zonder dat je daar zelf voor hoeft te leren programmeren.
+            </p>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Persoonlijk, nuchter en zonder verrassingen. Zo hoort het volgens ons.
+            </p>
+          </div>
+          <div class="bg-slate-50 rounded-2xl border border-slate-100 p-8 space-y-5">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center shrink-0">
+                <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-slate-900">Lokaal gericht</p>
+                <p class="mt-1 text-sm text-slate-600 leading-relaxed">We bouwen websites die vindbaar zijn in jouw regio, voor bedrijven die klanten in de buurt zoeken.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center shrink-0">
+                <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-slate-900">Alles per e-mail</p>
+                <p class="mt-1 text-sm text-slate-600 leading-relaxed">We werken bewust alleen via e-mail. Geen telefoontjes of wachtrijen, zodat het voor jou en voor ons zo makkelijk mogelijk blijft.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center shrink-0">
+                <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-slate-900">Alles in één abonnement</p>
+                <p class="mt-1 text-sm text-slate-600 leading-relaxed">Website, domein, hosting en onderhoud. Eén aanspreekpunt, één vast bedrag per maand.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -491,7 +716,7 @@
               </ul>
 
               <a href="#contact" class="mt-8 w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-teal-600 rounded-xl hover:bg-sky-500 transition-all shadow-md">
-                Start met een gratis demo
+                Start met een gratis voorbeeld
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </a>
             </div>
@@ -518,8 +743,8 @@
                   <svg class="text-teal-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <div>
-                  <p class="font-semibold text-slate-900">Binnen 2 werkdagen online, vaak sneller</p>
-                  <p class="mt-1 text-slate-600 leading-relaxed">Je aanpassing staat uiterlijk binnen twee werkdagen live op je website. In de praktijk regelen we het meestal nog diezelfde week, en vaak nog sneller.</p>
+                  <p class="font-semibold text-slate-900">Binnen 2 werkdagen online</p>
+                  <p class="mt-1 text-slate-600 leading-relaxed">Je aanpassing staat uiterlijk binnen twee werkdagen live op je website. In de praktijk regelen we het meestal sneller.</p>
                 </div>
               </li>
               <li class="flex gap-4">
@@ -658,7 +883,7 @@
             Vraag je gratis voorbeeld aan
           </h2>
           <p class="mt-4 text-lg text-slate-600">
-            Vul het formulier in en wij bouwen binnen 48 uur een voorbeeldwebsite op maat. Geen verplichtingen.
+            Vul het formulier in en wij bouwen binnen 48 uur een voorbeeldwebsite op maat. Geen verplichtingen. We regelen alles per e-mail via <a href="mailto:info@sitemaat.nl" class="text-teal-600 font-medium hover:underline">info@sitemaat.nl</a>, zo houden we het makkelijk voor iedereen.
           </p>
         </div>
 
@@ -704,9 +929,9 @@
 
             <div class="pt-2">
               <button type="submit" id="submit-btn" class="w-full rounded-xl bg-teal-600 px-6 py-4 text-lg font-bold text-white shadow-md transition-all hover:bg-teal-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-teal-600/25 disabled:opacity-60 disabled:cursor-not-allowed">
-                Ja, bouw mijn gratis voorbeeld website 🚀
+                Ja, bouw mijn gratis voorbeeldwebsite
               </button>
-              <p class="mt-3 text-center text-sm text-slate-500">🔒 Geen betaling nodig. Je zit nergens aan vast.</p>
+              <p class="mt-3 text-center text-sm text-slate-500">Geen betaling nodig. Je zit nergens aan vast.</p>
             </div>
           </form>
         </div>
@@ -718,19 +943,40 @@
   <!-- Footer -->
   <footer class="bg-slate-900 text-slate-400">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="text-center md:text-left">
-          <div class="flex items-center justify-center md:justify-start gap-3">
+      <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+        <div>
+          <div class="flex items-center gap-3">
             <img src="logo.png" alt="Sitemaat.nl" width="40" height="40" class="w-10 h-10 rounded-lg">
             <p class="text-xl font-bold text-white">
               Sitemaat<span class="text-teal-400">.nl</span>
             </p>
           </div>
-          <p class="mt-2 text-sm">Professionele websites voor lokale ondernemers.</p>
+          <p class="mt-3 text-sm leading-relaxed">Professionele websites voor lokale ondernemers in Nederland.</p>
+          <p class="mt-4 text-sm">
+            <a href="mailto:info@sitemaat.nl" class="text-teal-400 hover:text-teal-300 transition-colors">info@sitemaat.nl</a>
+          </p>
+          <p class="mt-3 text-xs text-slate-500 leading-relaxed">
+            Sitemaat · KvK 74655213<br>
+            Deellaan 50, Bemmel
+          </p>
         </div>
-        <div class="flex items-center gap-6 text-sm">
-          <a href="#" class="hover:text-white transition-colors">Algemene voorwaarden</a>
-          <a href="#" class="hover:text-white transition-colors">Privacybeleid</a>
+        <div>
+          <p class="text-sm font-semibold text-white mb-3">Pagina</p>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#hoe-het-werkt" class="hover:text-white transition-colors">Hoe het werkt</a></li>
+            <li><a href="#werk" class="hover:text-white transition-colors">Voorbeelden</a></li>
+            <li><a href="#prijzen" class="hover:text-white transition-colors">Prijzen</a></li>
+            <li><a href="#over-ons" class="hover:text-white transition-colors">Over ons</a></li>
+            <li><a href="#faq" class="hover:text-white transition-colors">Veelgestelde vragen</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-white mb-3">Juridisch</p>
+          <ul class="space-y-2 text-sm">
+            <li><a href="voorwaarden.html" class="hover:text-white transition-colors">Algemene voorwaarden</a></li>
+            <li><a href="privacy.html" class="hover:text-white transition-colors">Privacybeleid</a></li>
+          </ul>
         </div>
       </div>
       <div class="mt-8 pt-8 border-t border-slate-800 text-center text-sm">
@@ -849,6 +1095,43 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && successModal.classList.contains('is-open')) closeModal();
     });
+
+    // Portfolio carousel
+    const portfolioTrack = document.getElementById('portfolio-track');
+    function scrollPortfolio(direction) {
+      if (!portfolioTrack) return;
+      const card = portfolioTrack.querySelector('.portfolio-card');
+      const gap = 16;
+      const amount = card ? card.offsetWidth + gap : 300;
+      portfolioTrack.scrollBy({ left: direction * amount, behavior: 'smooth' });
+    }
+    ['portfolio-prev', 'portfolio-prev-mobile'].forEach(id => {
+      document.getElementById(id)?.addEventListener('click', () => scrollPortfolio(-1));
+    });
+    ['portfolio-next', 'portfolio-next-mobile'].forEach(id => {
+      document.getElementById(id)?.addEventListener('click', () => scrollPortfolio(1));
+    });
+
+    // Rotating niche headline
+    const niches = [
+      'rijscholen', 'schilders', 'stukadoors', 'timmermannen', 'kappers',
+      'schoonheidssalons', 'fysiotherapeuten', 'tandartsen', 'hoveniers', 'loodgieters',
+      'elektriciens', 'dakdekkers', 'autogarages', 'personal trainers', 'boekhouders',
+      'advocaten', 'cateraars', 'bloemisten', 'schoonmaakbedrijven', "nagelstudio's"
+    ];
+    const rotatingNiche = document.getElementById('rotating-niche');
+    let nicheIndex = 0;
+
+    if (rotatingNiche && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInterval(() => {
+        rotatingNiche.classList.add('is-changing');
+        setTimeout(() => {
+          nicheIndex = (nicheIndex + 1) % niches.length;
+          rotatingNiche.textContent = niches[nicheIndex];
+          rotatingNiche.classList.remove('is-changing');
+        }, 250);
+      }, 1000);
+    }
 
     // Hide default details marker
     document.querySelectorAll('summary').forEach(s => {
